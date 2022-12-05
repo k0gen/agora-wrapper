@@ -110,8 +110,9 @@ backup:
       - /mnt/backup
       - /root/data
     mounts:
-      BACKUP: "/mnt/backup" 
-      main: "/root/data"
+      BACKUP: /mnt/backup
+      main: /root/data
+    io-format: yaml
   restore:
     type: docker
     image: compat
@@ -120,11 +121,12 @@ backup:
     args:
       - duplicity
       - restore
-      - /root/data
       - /mnt/backup
+      - /root/data
     mounts:
-      BACKUP: "/mnt/backup"
-      main: "/root/data"
+      BACKUP: /mnt/backup
+      main: /root/data
+    io-format: yaml
 migrations:
   from:
     "*":
